@@ -1,1 +1,23 @@
-export const add = (a: number, b: number) => a + b;
+import { basename, resolve } from 'path';
+import validateProjectName from 'validate-npm-package-name';
+
+type ValidateNpmNameResult =
+  | {
+      valid: true;
+    }
+  | {
+      valid: false;
+      problems: string[];
+    };
+
+export function validateNpmName(name: string): ValidateNpmNameResult {
+  const nameValidation = validateProjectName(basename(resolve(name)));
+  if (nameValidation.validForNewPackages) {
+    return { valid: true };
+  }
+
+  return {
+    valid: false,
+    problems: [...(nameValidation.errors || []), ...(nameValidation.warnings || [])],
+  };
+}

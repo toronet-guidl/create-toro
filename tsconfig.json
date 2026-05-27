@@ -16,9 +16,11 @@
     "noImplicitOverride": true,
 
     /* If transpiling with TypeScript: */
-    "module": "NodeNext",
+    // "module": "NodeNext",
     "outDir": "dist",
     "rootDir": "src",
+
+    "types": ["node"],
 
     "allowImportingTsExtensions": true,
     "rewriteRelativeImportExtensions": true
