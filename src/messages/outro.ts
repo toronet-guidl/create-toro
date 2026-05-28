@@ -11,10 +11,6 @@ export function outro(options: Options) {
   console.log(bold('Next steps:'));
   console.log(dim(`${++steps}. Change into the project directory:`));
   console.log(green('   cd ' + options.name));
-  if (!options.skipInstall) {
-    console.log(dim(`${++steps}. Install dependencies:`));
-    console.log(green('   npm install'));
-  }
   console.log(dim(`${++steps}. Start the development server:`));
   console.log(green('   npm run dev'));
   console.log('');

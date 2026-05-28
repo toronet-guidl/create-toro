@@ -4,7 +4,6 @@ export function help() {
   console.log();
   console.log('Options:');
   console.log('  --name, -n       Specify the project name');
-  console.log('  --skip-install, -s   Skip installation of dependencies');
   console.log(
     "  --solidity-framework, -f   Specify the Solidity framework to use (e.g., 'hardhat', 'foundry' or 'none')",
   );

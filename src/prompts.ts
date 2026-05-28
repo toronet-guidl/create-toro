@@ -6,7 +6,6 @@ import { solidityFrameworkChoices } from './constants';
 
 const defaultOptions = {
   name: 'my-dapp-example',
-  skipInstall: false,
   solidityFramework: 'foundry',
   dev: false,
   help: false,
@@ -43,7 +42,6 @@ export async function promptForMissingOptions(options: Options): Promise<Options
 
     const mergedOptions: Options = {
       name: name,
-      skipInstall: options.skipInstall ?? defaultOptions.skipInstall,
       solidityFramework: solidityFramework === 'none' ? null : solidityFramework,
       dev: options.dev ?? defaultOptions.dev,
       help: options.help ?? defaultOptions.help,
@@ -60,20 +58,18 @@ export async function promptForMissingOptions(options: Options): Promise<Options
 export function parseArgs(args: string[]): Options {
   const parsedArgs = minimist(args, {
     alias: {
-      'skip-install': ['s', 'skipInstall'],
       'solidity-framework': ['f', 'solidityFramework'],
       name: ['n', 'project'],
       help: ['h'],
       version: ['v'],
       dev: ['d'],
     },
-    boolean: ['skip-install', 'version', 'dev', 'help'],
+    boolean: ['version', 'dev', 'help'],
     string: ['name', 'solidity-framework'],
   });
 
   return {
     name: parsedArgs.name || parsedArgs._[0] || null,
-    skipInstall: !!parsedArgs['skip-install'],
     solidityFramework: parsedArgs['solidity-framework'] || null,
     dev: parsedArgs.dev || false,
     help: !!parsedArgs.help,

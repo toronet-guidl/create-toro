@@ -16,15 +16,13 @@ export const checkSystemRequirements = async (options: Options) => {
     errors.push('Node.js is not installed. Please install Node.js >= 20.18.3');
   }
 
-  if (!options.skipInstall) {
-    try {
-      const { stdout: pnpmVersion } = await execa('pnpm', ['--version']);
-      if (semver.lt(pnpmVersion, '1.0.0')) {
-        errors.push(`pnpm version should be >= 1.0.0. Recommended version is >= 10.x. Current version: ${pnpmVersion}`);
-      }
-    } catch {
-      errors.push('pnpm is not installed. Please install pnpm >= 1.0.0. Recommended version is >= 10.x');
+  try {
+    const { stdout: pnpmVersion } = await execa('pnpm', ['--version']);
+    if (semver.lt(pnpmVersion, '1.0.0')) {
+      errors.push(`pnpm version should be >= 1.0.0. Recommended version is >= 10.x. Current version: ${pnpmVersion}`);
     }
+  } catch {
+    errors.push('pnpm is not installed. Please install pnpm >= 1.0.0. Recommended version is >= 10.x');
   }
 
   try {
