@@ -7,13 +7,13 @@ export async function installDependenciesRunPostScripts(options: Options) {
   const projectPath = path.resolve(options.name);
 
   // install dependencies in /core
-  const corePath = path.join(projectPath, 'core');
+  const corePath = path.join(projectPath, 'packages','core');
   await execa('pnpm', ['install'], { cwd: corePath });
 
   // run all post scripts in /contracts
-  const contractsPath = path.join(projectPath, 'contracts');
+  const contractsPath = path.join(projectPath, 'packages', 'contracts');
   const scaffoldConfigPath = path.join(contractsPath, 'scaffold.config.json');
-  const scaffoldConfig = await import(scaffoldConfigPath);
+  const scaffoldConfig = JSON.parse(fs.readFileSync(scaffoldConfigPath, 'utf8'));
   const postScripts = scaffoldConfig.postCommands || [];
   for (const script of postScripts) {
     script.split(' ').length > 1

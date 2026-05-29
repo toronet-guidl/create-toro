@@ -5,7 +5,7 @@ import { validateNpmName } from './utils.ts';
 import { solidityFrameworkChoices } from './constants.ts';
 
 const defaultOptions = {
-  name: 'my-dapp-example',
+  name: 'my-dapp-project',
   solidityFramework: 'foundry',
   dev: false,
   help: false,
