@@ -1,4 +1,4 @@
-export { intro } from './intro';
-export { outro } from './outro';
-export { help } from './help';
+export { intro } from './intro.ts';
+export { outro } from './outro.ts';
+export { help } from './help.ts';
 export { version } from './version.ts';

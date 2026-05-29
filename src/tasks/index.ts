@@ -1,5 +1,5 @@
-export { checkSystemRequirements } from './check-requirements';
-export { createProjectDirectory } from './create-directory';
-export { installDependenciesRunPostScripts } from './install-dependencies';
-export { copyTemplates } from './copy-templates';
-export { initializeGitRepository, createGitCommit } from './git-initialize';
+export { checkSystemRequirements } from './check-requirements.ts';
+export { createProjectDirectory } from './create-directory.ts';
+export { installDependenciesRunPostScripts } from './install-dependencies.ts';
+export { copyTemplates } from './copy-templates.ts';
+export { initializeGitRepository, createGitCommit } from './git-initialize.ts';

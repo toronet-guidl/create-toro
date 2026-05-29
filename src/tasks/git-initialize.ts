@@ -1,7 +1,7 @@
 import type { Options } from '../types/index.ts';
 import { execa } from 'execa';
 import path from 'node:path';
-import packageJson from '../../package.json';
+import packageJson from '../../package.json' with { type: 'json' };
 
 export async function initializeGitRepository(options: Options) {
   const projectRootPath = path.resolve(options.name);

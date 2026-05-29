@@ -12,6 +12,7 @@ export function help() {
   console.log('  --help, -h       Show this help message');
   console.log();
   console.log('Example:');
+  console.log('  npx create-toro@latest');
   console.log('  npx create-toro@latest --name my-toro-project --solidity-framework foundry');
   console.log();
 }

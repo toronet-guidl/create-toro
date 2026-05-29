@@ -1,7 +1,7 @@
 import { intro, outro, help, version } from './messages/index.ts';
 import { parseArgs, promptForMissingOptions } from './prompts.ts';
 import { Listr } from 'listr2';
-import { red } from 'picocolors';
+import pico from 'picocolors';
 import {
   createProjectDirectory,
   checkSystemRequirements,
@@ -9,7 +9,7 @@ import {
   initializeGitRepository,
   createGitCommit,
   installDependenciesRunPostScripts,
-} from './tasks/index';
+} from './tasks/index.ts';
 
 const args = process.argv;
 const initialOptions = parseArgs(args.slice(2));
@@ -35,8 +35,8 @@ async function main() {
       task: async () => {
         const { errors } = await checkSystemRequirements(options);
         if (errors.length > 0) {
-          console.log(red('The following issues were found:'));
-          errors.forEach((error) => console.log(red(`- ${error}`)));
+          console.log(pico.red('The following issues were found:'));
+          errors.forEach((error) => console.log(pico.red(`- ${error}`)));
           process.exit(1);
         }
       },

@@ -1,7 +1,7 @@
 import { execa } from 'execa';
 import semver from 'semver';
 import type { Options } from '../types/index.ts';
-import { yellow } from 'picocolors';
+import pico from 'picocolors';
 
 export const checkSystemRequirements = async (options: Options) => {
   const errors: string[] = [];
@@ -81,9 +81,9 @@ export const validateFoundry = async () => {
     }
   } catch {
     const message = ` 
-    ${yellow('Could not parse foundry version.')}
-    ${yellow('Please ensure foundry is properly installed')}
-    ${yellow('Checkout: https://getfoundry.sh')}
+    ${pico.yellow('Could not parse foundry version.')}
+    ${pico.yellow('Please ensure foundry is properly installed')}
+    ${pico.yellow('Checkout: https://getfoundry.sh')}
        `;
     throw new FoundryValidationError(message);
   }
@@ -93,10 +93,10 @@ export const validateFoundry = async () => {
     const version = versionMatch[1]!;
     if (semver.lt(version, REQUIRED_FOUNDRY_VERSION)) {
       const message = `
- ${yellow('Foundry version is older than required.')}
- ${yellow(`Current version: ${version}, required: >= ${REQUIRED_FOUNDRY_VERSION}`)}
- ${yellow('Please update foundry by running: foundryup')}
- ${yellow('Checkout: https://getfoundry.sh')}
+ ${pico.yellow('Foundry version is older than required.')}
+ ${pico.yellow(`Current version: ${version}, required: >= ${REQUIRED_FOUNDRY_VERSION}`)}
+ ${pico.yellow('Please update foundry by running: foundryup')}
+ ${pico.yellow('Checkout: https://getfoundry.sh')}
     `;
       throw new FoundryValidationError(message);
     }
