@@ -18,7 +18,7 @@ export async function copyTemplates(options: Options) {
   await emitter.clone(destinationPath);
 
   // copy the correct solidity framework template to `contracts` directory
-  const contractsPath = path.join(destinationPath, 'contracts');
+  const contractsPath = path.join(destinationPath, 'packages', 'contracts');
   const frameworkTemplatePath = path.join(destinationPath, 'packages', options.solidityFramework);
 
   await new Promise((resolve, reject) => {
