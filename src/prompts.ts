@@ -42,7 +42,7 @@ export async function promptForMissingOptions(options: Options): Promise<Options
 
     const mergedOptions: Options = {
       name: name,
-      solidityFramework: solidityFramework === 'none' ? null : solidityFramework,
+      solidityFramework: solidityFramework,
       dev: options.dev ?? defaultOptions.dev,
       help: options.help ?? defaultOptions.help,
       version: options.version ?? defaultOptions.version,

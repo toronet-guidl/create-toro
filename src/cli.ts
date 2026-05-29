@@ -1,9 +1,15 @@
 import { intro, outro, help, version } from './messages';
 import { parseArgs, promptForMissingOptions } from './prompts';
 import { Listr } from 'listr2';
-import { checkSystemRequirements } from './tasks/check-requirements';
 import { red } from 'picocolors';
-import { createProjectDirectory } from './tasks/create-directory';
+import {
+  createProjectDirectory,
+  checkSystemRequirements,
+  copyTemplates,
+  initializeGitRepository,
+  createGitCommit,
+  installDependenciesRunPostScripts,
+} from './tasks';
 
 const args = process.argv;
 const initialOptions = parseArgs(args.slice(2));
@@ -37,8 +43,24 @@ async function main() {
     },
     {
       title: `📁 Create project directory`,
-      task: () => createProjectDirectory(options),
+      task: async () => await createProjectDirectory(options),
     },
+    {
+      title: '📄 Copy template files',
+      task: async () => await copyTemplates(options),
+    },
+    {
+      title: '⚙️ Initialize Git repository',
+      task: async () => await initializeGitRepository(options),
+    },
+    {
+      title: '📦 Installing dependencies and running setup scripts',
+      task: async () => await installDependenciesRunPostScripts(options),
+    },
+    {
+      title: '⚙️ Finishing Up',
+      task: async () => await createGitCommit(options),
+    }
   ]);
 
   await tasks.run();
