@@ -1,10 +1,10 @@
-import type { Options } from '../types';
-import { templateRepository, solidityFrameworkChoices } from '../constants';
+import type { Options } from '../types/index.ts';
+import { templateRepository, solidityFrameworkChoices } from '../constants.ts';
 import degit from 'degit';
 import path from 'node:path';
 import fs from 'node:fs';
 import ncp from 'ncp';
-import mergeJsonStr from "merge-packages";
+import mergeJsonStr from 'merge-packages';
 
 export async function copyTemplates(options: Options) {
   // copy github repository to destination path

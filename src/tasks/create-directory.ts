@@ -1,4 +1,4 @@
-import type { Options } from '../types';
+import type { Options } from '../types/index.ts';
 import { execa } from 'execa';
 import fs from 'fs';
 import path from 'path';

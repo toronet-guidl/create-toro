@@ -1,4 +1,4 @@
-import { solidityFrameworkChoices } from '../constants';
+import { solidityFrameworkChoices } from '../constants.ts';
 
 export type SolidityFramework = (typeof solidityFrameworkChoices)[number];
 

@@ -1,8 +1,8 @@
 import minimist from 'minimist';
-import type { Options } from './types';
+import type { Options } from './types/index.ts';
 import { input, select } from '@inquirer/prompts';
-import { validateNpmName } from './utils';
-import { solidityFrameworkChoices } from './constants';
+import { validateNpmName } from './utils.ts';
+import { solidityFrameworkChoices } from './constants.ts';
 
 const defaultOptions = {
   name: 'my-dapp-example',

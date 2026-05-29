@@ -1,5 +1,5 @@
-import { intro, outro, help, version } from './messages';
-import { parseArgs, promptForMissingOptions } from './prompts';
+import { intro, outro, help, version } from './messages/index.ts';
+import { parseArgs, promptForMissingOptions } from './prompts.ts';
 import { Listr } from 'listr2';
 import { red } from 'picocolors';
 import {
@@ -9,7 +9,7 @@ import {
   initializeGitRepository,
   createGitCommit,
   installDependenciesRunPostScripts,
-} from './tasks';
+} from './tasks/index';
 
 const args = process.argv;
 const initialOptions = parseArgs(args.slice(2));
@@ -60,7 +60,7 @@ async function main() {
     {
       title: '⚙️ Finishing Up',
       task: async () => await createGitCommit(options),
-    }
+    },
   ]);
 
   await tasks.run();

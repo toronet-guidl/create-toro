@@ -1,6 +1,6 @@
 import { execa } from 'execa';
 import semver from 'semver';
-import type { Options } from '../types';
+import type { Options } from '../types/index.ts';
 import { yellow } from 'picocolors';
 
 export const checkSystemRequirements = async (options: Options) => {

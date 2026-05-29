@@ -1,5 +1,5 @@
 import { green, bold, dim } from 'picocolors';
-import type { Options } from '../types';
+import type { Options } from '../types/index.ts';
 import { mind } from 'gradient-string';
 
 const website = 'https://scaffold-toro.vercel.app';

@@ -1,4 +1,4 @@
-declare module "merge-packages" {
+declare module 'merge-packages' {
   const mergePackages: {
     default: (target: string, second: string) => string;
   };
